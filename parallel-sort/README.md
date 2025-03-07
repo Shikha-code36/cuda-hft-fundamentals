@@ -39,7 +39,7 @@ The core data being sorted is time-series market data with these properties:
 
 ## Performance Analysis
 
-![Parallel Sort Execution](screenshots/parallel_sort_execution.png)
+![Parallel Sort Benchmark](https://github.com/Shikha-code36/cuda-hft-fundamentals/blob/main/screenshots/parallel_sort_execution.png)
 
 In benchmark tests with 1 million data points:
 - CPU Sort: ~560ms
