@@ -44,7 +44,7 @@ This project implements key high-frequency trading (HFT) components in CUDA to d
 
    ![VS Code Kit Selection](screenshots/compiler_kit_selection.jpg)
 
-4. After succesfull configuration it will create some build files:
+4. After succesful configuration it will create some build files:
 
    ![VS Code CMake Success](screenshots/configure_success.png)
 
