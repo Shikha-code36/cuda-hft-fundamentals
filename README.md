@@ -52,7 +52,7 @@ Each component contains its own detailed README explaining the implementation de
 
 5. Build the project using F7 or the CMake Build button:
 
-    ![VS Code Build](screenshots/build_output.png)
+    ![VS Code Build](screenshots/build.png)
 
    ![VS Code Build Output](screenshots/build_output.png)
 
