@@ -4,8 +4,10 @@ This project implements key high-frequency trading (HFT) components in CUDA to d
 
 ## Components
 
-1. **Order Book** - A limit order book implementation with matching engine
-2. **Parallel Sort** - High-performance sorting algorithms for market data
+1. **Order Book** - A limit order book implementation with matching engine - [Learn more](order-book/README.md)
+2. **Parallel Sort** - High-performance sorting algorithms for market data - [Learn more](parallel-sort/README.md)
+
+Each component contains its own detailed README explaining the implementation details, algorithmic approaches, and performance characteristics.
 
 ## Prerequisites
 
