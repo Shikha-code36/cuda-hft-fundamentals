@@ -179,9 +179,17 @@ void CUDAOrderBook::cancelOrder(unsigned long long order_id) {
 
 void CUDAOrderBook::matchOrders() {
     // Check if there are any matches (bid >= ask)
+    // Check if there are any potential matches by comparing best prices
+    // No matches are possible if the highest buy price (bid) is less than the lowest sell price (ask)
     if (d_buy_orders.empty() || d_sell_orders.empty() || best_bid < best_ask) {
         return;
     }
+
+    // ----- ORDER PRIORITY LOGIC -----
+    // Sort orders according to standard financial market price-time priority rules:
+    // 1. Buy orders: Higher prices have higher priority (willing to pay more)
+    // 2. Sell orders: Lower prices have higher priority (willing to sell for less)
+    // 3. Within the same price level, earlier orders have priority (time priority)
     
     // Sort buy orders by price (descending) and time (ascending)
     thrust::sort(d_buy_orders.begin(), d_buy_orders.end(), 
@@ -197,7 +205,8 @@ void CUDAOrderBook::matchOrders() {
             return a.timestamp < b.timestamp;
         });
     
-    // Match orders
+    // ----- ORDER MATCHING LOGIC -----
+    // Continuously match orders while crossing orders exist
     bool matched = true;
     while (matched && !d_buy_orders.empty() && !d_sell_orders.empty()) {
         matched = false;
@@ -211,62 +220,96 @@ void CUDAOrderBook::matchOrders() {
         Order best_buy = d_buy_orders[0];
         Order best_sell = d_sell_orders[0];
         
-        // Check if they match
+         // ----- PRICE MATCHING RULE -----
+        // A match occurs when the buy price >= sell price
+        // This follows the standard price-time priority matching rule in financial markets
         if (best_buy.price >= best_sell.price) {
             matched = true;
             
-            // Determine the executed quantity
+             // ----- EXECUTION QUANTITY DETERMINATION -----
+            // In financial markets, the match is limited by the smaller of the two order quantities
+            // This implements partial fills - large orders may need multiple matches to completely fill
             int exec_qty = std::min(best_buy.quantity, best_sell.quantity);
             
-            // Update order quantities
+            // ----- TRADE EXECUTION PRICE -----
+            // Note: In real markets, the execution price is typically:
+            // 1. The price of the resting order (order that was already in the book)
+            // 2. Or the midpoint price in some markets
+            // 3. Or the crossing price of the aggressor (the incoming order)
+            // Here we don't explicitly calculate the execution price, but in a real system
+            // you would record this price for trade reporting and settlement
+
+            // ----- ORDER QUANTITY MANAGEMENT -----
+            // Update remaining quantities after partial execution
             best_buy.quantity -= exec_qty;
             best_sell.quantity -= exec_qty;
             
-            // Update or remove orders in device memory
+            // ----- ORDER CLEANUP LOGIC -----
+            // Remove or update orders based on their remaining quantities
+            
+            // Process buy order: Remove if fully filled, update if partially filled
             if (best_buy.quantity == 0) {
+                // Order fully executed - remove from book and map
                 buy_order_map.erase(best_buy.id);
                 // Check if vector is not empty before erasing
                 if (!d_buy_orders.empty()) {
                     d_buy_orders.erase(d_buy_orders.begin());
                 }
             } else {
+                // Order partially executed - update quantity
                 // Update the order in device memory if vector is not empty
                 if (!d_buy_orders.empty()) {
                     d_buy_orders[0] = best_buy;
                 }
             }
             
+             // Process sell order: Remove if fully filled, update if partially filled
             if (best_sell.quantity == 0) {
+                // Order fully executed - remove from book and map
                 sell_order_map.erase(best_sell.id);
                 // Check if vector is not empty before erasing
                 if (!d_sell_orders.empty()) {
                     d_sell_orders.erase(d_sell_orders.begin());
                 }
             } else {
+                // Order partially executed - update quantity
                 // Update the order in device memory if vector is not empty
                 if (!d_sell_orders.empty()) {
                     d_sell_orders[0] = best_sell;
                 }
             }
             
-            // Update best bid/ask
+            // ----- BOOK MAINTENANCE -----
+            // Update the best bid/ask prices after order execution
+            // These values are cached for quick access and spread calculation
+
             if (d_buy_orders.empty()) {
-                best_bid = 0.0;
+                best_bid = 0.0; // No more buy orders
             } else {
                 Order front_buy = d_buy_orders[0];
-                best_bid = front_buy.price;
+                best_bid = front_buy.price; // Update to new best bid
             }
             
             if (d_sell_orders.empty()) {
-                best_ask = std::numeric_limits<double>::max();
+                best_ask = std::numeric_limits<double>::max(); // No more sell orders
             } else {
                 Order front_sell = d_sell_orders[0];
-                best_ask = front_sell.price;
+                best_ask = front_sell.price; // Update to new best ask
             }
+
+            // Note: In a real trading system, you would:
+            // 1. Generate trade confirmations here
+            // 2. Update position/risk management systems
+            // 3. Trigger any settlement processes
+            // 4. Notify market participants of the execution
+
         }
     }
     
-    // Rebuild the order maps
+    // ----- ORDER MAP RECONSTRUCTION -----
+    // Rebuild the order maps to ensure they accurately reflect the current state
+    // This step is crucial for maintaining O(1) access for order cancellations
+
     buy_order_map.clear();
     thrust::host_vector<Order> h_buy_orders = d_buy_orders;
     for (size_t i = 0; i < h_buy_orders.size(); i++) {
@@ -278,6 +321,10 @@ void CUDAOrderBook::matchOrders() {
     for (size_t i = 0; i < h_sell_orders.size(); i++) {
         sell_order_map[h_sell_orders[i].id] = i;
     }
+    // The spread (best_ask - best_bid) can now be calculated
+    // - Positive spread: Normal market condition
+    // - Zero spread: Market is locked (unusual in real markets)
+    // - Negative spread: Market is crossed (would trigger more matching)
 }
 
 void CUDAOrderBook::printOrderBook() const {
