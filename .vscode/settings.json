@@ -1,0 +1,16 @@
+{
+    "cmake.configureOnOpen": true,
+    "cmake.configureSettings": {
+        "CMAKE_BUILD_TYPE": "Debug"
+    },
+    "cmake.generator": "Visual Studio 17 2022",
+    "cmake.preferredGenerators": ["Visual Studio 17 2022"],
+    "cmake.configureArgs": [
+        "-A", "x64"
+    ],
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "files.associations": {
+        "*.cu": "cuda",
+        "*.cuh": "cuda"
+    }
+}

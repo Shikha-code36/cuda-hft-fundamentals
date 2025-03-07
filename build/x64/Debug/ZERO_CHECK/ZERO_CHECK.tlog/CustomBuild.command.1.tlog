@@ -1,0 +1,10 @@
+^C:\USERS\SHIKHA PANDEY\DOCUMENTS\NEWPRO\CUDA-HFT-FUNDAMENTALS\BUILD\CMAKEFILES\56367ED61F8E97871FA6BA1FD649300B\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Shikha Pandey/Documents/newpro/cuda-hft-fundamentals" "-BC:/Users/Shikha Pandey/Documents/newpro/cuda-hft-fundamentals/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Shikha Pandey/Documents/newpro/cuda-hft-fundamentals/build/cuda_finance.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
