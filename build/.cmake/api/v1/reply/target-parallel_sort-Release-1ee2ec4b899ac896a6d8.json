@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/parallel_sort.exe"
+			"path" : "Release/parallel_sort.exe"
 		},
 		{
-			"path" : "RelWithDebInfo/parallel_sort.pdb"
+			"path" : "Release/parallel_sort.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +35,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 42,
+				"line" : 54,
 				"parent" : 0
 			},
 			{
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-D_WINDOWS -Xcompiler=\" /GR /EHsc\" -Xcompiler=\" -Zi -O2 -Ob1\" -DNDEBUG -std=c++14 \"--generate-code=arch=compute_50,code=[compute_50,sm_50]\" \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\" \"--generate-code=arch=compute_60,code=[compute_60,sm_60]\" \"--generate-code=arch=compute_61,code=[compute_61,sm_61]\" \"--generate-code=arch=compute_70,code=[compute_70,sm_70]\" \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" \"--generate-code=arch=compute_80,code=[compute_80,sm_80]\" -Xcompiler=-MD"
+					"fragment" : "-D_WINDOWS -Xcompiler=\" /GR /EHsc\" -Xcompiler=\"-O2 -Ob2\" -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" \"--generate-code=arch=compute_80,code=[compute_80,sm_80]\" -Xcompiler=-MD"
 				},
 				{
 					"backtrace" : 2,
@@ -73,7 +73,7 @@
 				[
 					1
 				],
-				"standard" : "14"
+				"standard" : "17"
 			},
 			"sourceIndexes" : 
 			[
@@ -94,11 +94,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-D_WINDOWS -Xcompiler=\" /GR /EHsc\" -Xcompiler=\" -Zi -O2 -Ob1\" -DNDEBUG \"--generate-code=arch=compute_50,code=[compute_50,sm_50]\" \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\" \"--generate-code=arch=compute_60,code=[compute_60,sm_60]\" \"--generate-code=arch=compute_61,code=[compute_61,sm_61]\" \"--generate-code=arch=compute_70,code=[compute_70,sm_70]\" \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" \"--generate-code=arch=compute_80,code=[compute_80,sm_80]\" -Xcompiler=-MD",
+				"fragment" : "-D_WINDOWS -Xcompiler=\" /GR /EHsc\" -Xcompiler=\"-O2 -Ob2\" -DNDEBUG \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" \"--generate-code=arch=compute_80,code=[compute_80,sm_80]\" -Xcompiler=-MD",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO",
 				"role" : "flags"
 			},
 			{

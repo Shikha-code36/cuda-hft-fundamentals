@@ -105,7 +105,7 @@
     <CudaCompile>
       <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include;%(Include)</Include>
       <Defines>%(Defines);_WINDOWS;CMAKE_INTDIR="Debug"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 --generate-code=arch=compute_50,code=[compute_50,sm_50] --generate-code=arch=compute_52,code=[compute_52,sm_52] --generate-code=arch=compute_60,code=[compute_60,sm_60] --generate-code=arch=compute_61,code=[compute_61,sm_61] --generate-code=arch=compute_70,code=[compute_70,sm_70] --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Zi -Ob0"</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++17 --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Zi -Ob0"</AdditionalOptions>
       <CodeGeneration></CodeGeneration>
       <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
       <CudaRuntime>Static</CudaRuntime>
@@ -140,7 +140,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler=" -Zi -Ob0 -Od /RTC1" "--generate-code=arch=compute_50,code=[compute_50,sm_50]" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" "--generate-code=arch=compute_60,code=[compute_60,sm_60]" "--generate-code=arch=compute_61,code=[compute_61,sm_61]" "--generate-code=arch=compute_70,code=[compute_70,sm_70]" "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MDd</AdditionalOptions>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler=" -Zi -Ob0 -Od /RTC1" "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MDd</AdditionalOptions>
       <PerformDeviceLink>true</PerformDeviceLink>
     </CudaLink>
   </ItemDefinitionGroup>
@@ -164,7 +164,7 @@
     <CudaCompile>
       <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include;%(Include)</Include>
       <Defines>%(Defines);_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 --generate-code=arch=compute_50,code=[compute_50,sm_50] --generate-code=arch=compute_52,code=[compute_52,sm_52] --generate-code=arch=compute_60,code=[compute_60,sm_60] --generate-code=arch=compute_61,code=[compute_61,sm_61] --generate-code=arch=compute_70,code=[compute_70,sm_70] --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Ob2"</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++17 --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Ob2"</AdditionalOptions>
       <CodeGeneration></CodeGeneration>
       <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
       <CudaRuntime>Static</CudaRuntime>
@@ -198,7 +198,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler="-O2 -Ob2" -DNDEBUG "--generate-code=arch=compute_50,code=[compute_50,sm_50]" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" "--generate-code=arch=compute_60,code=[compute_60,sm_60]" "--generate-code=arch=compute_61,code=[compute_61,sm_61]" "--generate-code=arch=compute_70,code=[compute_70,sm_70]" "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MD</AdditionalOptions>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler="-O2 -Ob2" -DNDEBUG "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MD</AdditionalOptions>
       <PerformDeviceLink>true</PerformDeviceLink>
     </CudaLink>
   </ItemDefinitionGroup>
@@ -222,7 +222,7 @@
     <CudaCompile>
       <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include;%(Include)</Include>
       <Defines>%(Defines);_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 --generate-code=arch=compute_50,code=[compute_50,sm_50] --generate-code=arch=compute_52,code=[compute_52,sm_52] --generate-code=arch=compute_60,code=[compute_60,sm_60] --generate-code=arch=compute_61,code=[compute_61,sm_61] --generate-code=arch=compute_70,code=[compute_70,sm_70] --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Ob1"</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++17 --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Ob1"</AdditionalOptions>
       <CodeGeneration></CodeGeneration>
       <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
       <CudaRuntime>Static</CudaRuntime>
@@ -256,7 +256,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler="-O1 -Ob1" -DNDEBUG "--generate-code=arch=compute_50,code=[compute_50,sm_50]" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" "--generate-code=arch=compute_60,code=[compute_60,sm_60]" "--generate-code=arch=compute_61,code=[compute_61,sm_61]" "--generate-code=arch=compute_70,code=[compute_70,sm_70]" "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MD</AdditionalOptions>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler="-O1 -Ob1" -DNDEBUG "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MD</AdditionalOptions>
       <PerformDeviceLink>true</PerformDeviceLink>
     </CudaLink>
   </ItemDefinitionGroup>
@@ -280,7 +280,7 @@
     <CudaCompile>
       <Include>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\include;%(Include)</Include>
       <Defines>%(Defines);_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</Defines>
-      <AdditionalOptions>%(AdditionalOptions) -std=c++14 --generate-code=arch=compute_50,code=[compute_50,sm_50] --generate-code=arch=compute_52,code=[compute_52,sm_52] --generate-code=arch=compute_60,code=[compute_60,sm_60] --generate-code=arch=compute_61,code=[compute_61,sm_61] --generate-code=arch=compute_70,code=[compute_70,sm_70] --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Zi -Ob1"</AdditionalOptions>
+      <AdditionalOptions>%(AdditionalOptions) -std=c++17 --generate-code=arch=compute_75,code=[compute_75,sm_75] --generate-code=arch=compute_80,code=[compute_80,sm_80] --extended-lambda -Xcompiler="/EHsc -Zi -Ob1"</AdditionalOptions>
       <CodeGeneration></CodeGeneration>
       <CompileOut>$(IntDir)%(Filename).obj</CompileOut>
       <CudaRuntime>Static</CudaRuntime>
@@ -314,7 +314,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <CudaLink>
-      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler=" -Zi -O2 -Ob1" -DNDEBUG "--generate-code=arch=compute_50,code=[compute_50,sm_50]" "--generate-code=arch=compute_52,code=[compute_52,sm_52]" "--generate-code=arch=compute_60,code=[compute_60,sm_60]" "--generate-code=arch=compute_61,code=[compute_61,sm_61]" "--generate-code=arch=compute_70,code=[compute_70,sm_70]" "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MD</AdditionalOptions>
+      <AdditionalOptions>-forward-unknown-to-host-compiler -Wno-deprecated-gpu-targets -D_WINDOWS -Xcompiler=" /GR /EHsc" -Xcompiler=" -Zi -O2 -Ob1" -DNDEBUG "--generate-code=arch=compute_75,code=[compute_75,sm_75]" "--generate-code=arch=compute_80,code=[compute_80,sm_80]" -Xcompiler=-MD</AdditionalOptions>
       <PerformDeviceLink>true</PerformDeviceLink>
     </CudaLink>
   </ItemDefinitionGroup>

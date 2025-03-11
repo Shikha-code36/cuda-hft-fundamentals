@@ -182,6 +182,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{3F201681-3329-3A66-80FC-B7E79FE72590}</Project>
       <Name>parallel_sort</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\Shikha Pandey\Documents\newpro\cuda-hft-fundamentals\build\zero_copy_processor.vcxproj">
+      <Project>{C0385D17-74EB-303F-A3FA-477EC8B2A23B}</Project>
+      <Name>zero_copy_processor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
