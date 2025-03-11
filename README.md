@@ -6,6 +6,7 @@ This project implements key high-frequency trading (HFT) components in CUDA to d
 
 1. **Order Book** - A limit order book implementation with matching engine - [Learn more](order-book/README.md)
 2. **Parallel Sort** - High-performance sorting algorithms for market data - [Learn more](parallel-sort/README.md)
+3. **Zero-Copy Market Data Processing** - Low-latency market data feed processing using zero-copy memory techniques - [Learn more](zero-copy-processing/README.md)
 
 Each component contains its own detailed README explaining the implementation details, algorithmic approaches, and performance characteristics.
 
@@ -104,6 +105,21 @@ Example output:
 Example output:
 
 ![Parallel Sort Execution](screenshots/parallel_sort_execution.png)
+
+### Zero Copy Processing Benchmark
+
+```bash
+# From build directory
+./Debug/zero_copy_processor.exe 
+```
+```bash
+# If you have GPU limitation
+./Debug/zero_copy_processor.exe [data_size]
+```
+
+Example output:
+
+![Zero Copy Processing](screenshots/zero_copy_processing.png)
 
 ## Performance Analysis
 
