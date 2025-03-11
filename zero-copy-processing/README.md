@@ -63,8 +63,8 @@ Typical results for 1,000,000 market data packets:
 | Method | Average Latency (μs) | Improvement |
 |--------|---------------------|-------------|
 | Standard | ~13,000 μs | Baseline |
-| Zero-Copy | ~3,700 μs | ~72% |
-| Zero-Copy + Streams | ~3,800 μs | ~72% |
+| Zero-Copy | ~3,700 μs | ~69% |
+| Zero-Copy + Streams | ~3,800 μs | ~69% |
 
 ## Building and Running
 
